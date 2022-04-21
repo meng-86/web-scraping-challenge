@@ -3,11 +3,12 @@ from bs4 import BeautifulSoup as bs
 import pandas as pd
 import requests
 import time
+from webdriver_manager.chrome import ChromeDriverManager
 
 def scrape():
     news_url = 'https://mars.nasa.gov/news'
 
-    executable_path = {'executable_path': 'chromedriver.exe'}
+    executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=True)
 
     browser.visit(news_url)
